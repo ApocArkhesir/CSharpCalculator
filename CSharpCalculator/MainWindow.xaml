@@ -26,19 +26,19 @@
         </Grid.RowDefinitions>
         
         <!-- Number buttons -->
-        <Button x:Name="Button7" Grid.Row="2" Grid.Column="0">7</Button>
-        <Button x:Name="Button8" Grid.Row="2" Grid.Column="1">8</Button>
-        <Button x:Name="Button9" Grid.Row="2" Grid.Column="2">9</Button>
+        <Button x:Name="Button7" Grid.Row="2" Grid.Column="0" Click="Button7_Click">7</Button>
+        <Button x:Name="Button8" Grid.Row="2" Grid.Column="1" Click="Button8_Click">8</Button>
+        <Button x:Name="Button9" Grid.Row="2" Grid.Column="2" Click="Button9_Click">9</Button>
 
-        <Button x:Name="Button4" Grid.Row="3" Grid.Column="0">4</Button>
-        <Button x:Name="Button5" Grid.Row="3" Grid.Column="1">5</Button>
-        <Button x:Name="Button6" Grid.Row="3" Grid.Column="2">6</Button>
+        <Button x:Name="Button4" Grid.Row="3" Grid.Column="0" Click="Button4_Click">4</Button>
+        <Button x:Name="Button5" Grid.Row="3" Grid.Column="1" Click="Button5_Click">5</Button>
+        <Button x:Name="Button6" Grid.Row="3" Grid.Column="2" Click="Button6_Click">6</Button>
 
-        <Button x:Name="Button1" Grid.Row="4" Grid.Column="0">1</Button>
-        <Button x:Name="Button2" Grid.Row="4" Grid.Column="1">2</Button>
-        <Button x:Name="Button3" Grid.Row="4" Grid.Column="2">3</Button>
+        <Button x:Name="Button1" Grid.Row="4" Grid.Column="0" Click="Button1_Click">1</Button>
+        <Button x:Name="Button2" Grid.Row="4" Grid.Column="1" Click="Button2_Click">2</Button>
+        <Button x:Name="Button3" Grid.Row="4" Grid.Column="2" Click="Button3_Click">3</Button>
 
-        <Button x:Name="Button0" Grid.Row="5" Grid.Column="1">0</Button>
+        <Button x:Name="Button0" Grid.Row="5" Grid.Column="1" Click="Button0_Click">0</Button>
         
         <!-- Operation buttons -->
         <Button x:Name="ButtonClearEntry" Grid.Row="1" Grid.Column="0">CE</Button>
