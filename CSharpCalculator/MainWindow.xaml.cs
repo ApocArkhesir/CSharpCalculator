@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Windows;
 
 namespace CSharpCalculator
@@ -24,12 +25,12 @@ namespace CSharpCalculator
         {
             if (_operation == String.Empty)
             {
-                _number1 = (double.Parse(_number1) * 10 + digit).ToString();
+                _number1 = (double.Parse(_number1) * 10 + digit).ToString(CultureInfo.InvariantCulture);
                 Display.Text = _number1;
             }
             else
             {
-                _number2 = (double.Parse(_number2) * 10 + digit).ToString();
+                _number2 = (double.Parse(_number2) * 10 + digit).ToString(CultureInfo.InvariantCulture);
                 Display.Text = _number2;
             } 
         }
@@ -145,19 +146,19 @@ namespace CSharpCalculator
             switch (_operation)
             {
                 case "+" :
-                    _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString();
+                    _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
 
                 case "-":
-                    _number1 = (double.Parse(_number1) - double.Parse(_number2)).ToString();
+                    _number1 = (double.Parse(_number1) - double.Parse(_number2)).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
 
                 case "*":
-                    _number1 = (double.Parse(_number1) * double.Parse(_number2)).ToString();
+                    _number1 = (double.Parse(_number1) * double.Parse(_number2)).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
@@ -165,7 +166,7 @@ namespace CSharpCalculator
                 case "/":
                     if (_number2 != "0")
                     {
-                        _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString();
+                        _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString(CultureInfo.InvariantCulture);
                         Display.Text = _number1;
                     }
                     else
@@ -174,31 +175,31 @@ namespace CSharpCalculator
                     break;
 
                 case "%":
-                    _number1 = (double.Parse(_number1) * double.Parse(_number2) / 100).ToString();
+                    _number1 = (double.Parse(_number1) * double.Parse(_number2) / 100).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
 
                 case "sqrt":
-                    _number1 = Math.Sqrt(double.Parse(_number1)).ToString();
+                    _number1 = Math.Sqrt(double.Parse(_number1)).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
 
                 case "pow":
-                    _number1 = Math.Pow(double.Parse(_number1), 2).ToString();
+                    _number1 = Math.Pow(double.Parse(_number1), 2).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
 
                 case "1/x":
-                    _number1 = Math.Pow(double.Parse(_number1), -1).ToString();
+                    _number1 = Math.Pow(double.Parse(_number1), -1).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
 
                 case "sign":
-                    _number1 = (double.Parse(_number1) * -1).ToString();
+                    _number1 = (double.Parse(_number1) * -1).ToString(CultureInfo.InvariantCulture);
                     Display.Text = _number1;
                     _operation = String.Empty;
                     break;
@@ -255,7 +256,7 @@ namespace CSharpCalculator
 
         private void ButtonComma_Click(object sender, RoutedEventArgs e)
         {
-            _number1 = _number1.Insert(_number1.LastIndexOfAny(_number1.ToCharArray()), ",");
+            _number1 = _number1.Insert(_number1.LastIndexOfAny(_number1.ToCharArray()) + 1, ".");
             Display.Text = _number1;
         }
     }
