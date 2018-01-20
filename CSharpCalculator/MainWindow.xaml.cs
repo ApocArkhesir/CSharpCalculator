@@ -8,8 +8,8 @@ namespace CSharpCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private double _number1;
-        private double _number2;
+        private string _number1 = "0";
+        private string _number2 = "0";
         private string _operation = String.Empty;
 
         public MainWindow()
@@ -20,17 +20,17 @@ namespace CSharpCalculator
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
-        private void AddDigit(int digit)
+        private void AddDigit(double digit)
         {
             if (_operation == String.Empty)
             {
-                _number1 = (_number1 * 10) + digit;
-                Display.Text = _number1.ToString();
+                _number1 = (double.Parse(_number1) * 10 + digit).ToString();
+                Display.Text = _number1;
             }
             else
             {
-                _number2 = (_number2 * 10) + digit;
-                Display.Text = _number2.ToString();
+                _number2 = (double.Parse(_number2) * 10 + digit).ToString();
+                Display.Text = _number2;
             } 
         }
 
@@ -40,26 +40,26 @@ namespace CSharpCalculator
             {
                 try
                 {
-                    _number1 = Convert.ToDouble(_number1.ToString().Remove(_number1.ToString().Length - 1));
-                    Display.Text = _number1.ToString();
+                    _number1 = _number1.Remove(_number1.Length - 1);
+                    Display.Text = _number1;
                 }
                 catch (FormatException e)
                 {
-                    _number1 = 0;
-                    Display.Text = _number1.ToString();
+                    _number1 = "0";
+                    Display.Text = _number1;
                 }                
             }
             else
             {
                 try
                 {
-                    _number2 = Convert.ToDouble(_number2.ToString().Remove(_number2.ToString().Length - 1));
-                    Display.Text = _number2.ToString();
+                    _number2 = _number2.Remove(_number2.Length - 1);
+                    Display.Text = _number2;
                 }
                 catch (FormatException e)
                 {
-                    _number2 = 0;
-                    Display.Text = _number2.ToString();
+                    _number2 = "0";
+                    Display.Text = _number2;
                 }
             }
         }
@@ -145,73 +145,71 @@ namespace CSharpCalculator
             switch (_operation)
             {
                 case "+" :
-                    _number1 += _number2;
-                    Display.Text = _number1.ToString();
+                    _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "-":
-                    _number1 -= _number2;
-                    Display.Text = _number1.ToString();
+                    _number1 = (double.Parse(_number1) - double.Parse(_number2)).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "*":
-                    _number1 *= _number2;
-                    Display.Text = _number1.ToString();
+                    _number1 = (double.Parse(_number1) * double.Parse(_number2)).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "/":
-                    if (_number2 != 0)
+                    if (_number2 != "0")
                     {
-                        _number1 /= _number2;
-                        Display.Text = _number1.ToString();
+                        _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString();
+                        Display.Text = _number1;
                     }
                     else
                         Display.Text = "Cannot divide by zero.";
                     break;
 
                 case "%":
-                    _number1 = (_number1 * _number2) / 100;
-                    Display.Text = _number1.ToString();
+                    _number1 = (double.Parse(_number1) * double.Parse(_number2) / 100).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "sqrt":
-                    _number1 = Math.Sqrt(_number1);
-                    Display.Text = _number1.ToString();
+                    _number1 = Math.Sqrt(double.Parse(_number1)).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "pow":
-                    _number1 = Math.Pow(_number1, 2);
-                    Display.Text = _number1.ToString();
+                    _number1 = Math.Pow(double.Parse(_number1), 2).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "1/x":
-                    _number1 = Math.Pow(_number1, -1);
-                    Display.Text = _number1.ToString();
+                    _number1 = Math.Pow(double.Parse(_number1), -1).ToString();
+                    Display.Text = _number1;
                     break;
 
                 case "sign":
-                    _number1 *= -1;
-                    Display.Text = _number1.ToString();
+                    _number1 = (double.Parse(_number1) * -1).ToString();
+                    Display.Text = _number1;
                     break;
-
-                
             }
         }
 
         private void ButtonClearEntry_Click(object sender, RoutedEventArgs e)
         {
             if (_operation == String.Empty)
-                _number1 = 0;
+                _number1 = String.Empty;
             else
-                _number2 = 0;
+                _number2 = String.Empty;
 
             Display.Text = "0";
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            _number1 = 0;
-            _number2 = 0;
+            _number1 = String.Empty;
+            _number2 = String.Empty;
             _operation = String.Empty;
             Display.Text = "0";
         }
@@ -248,7 +246,8 @@ namespace CSharpCalculator
 
         private void ButtonComma_Click(object sender, RoutedEventArgs e)
         {
-            _number1 = 
+            _number1 = _number1.Insert(_number1.LastIndexOfAny(_number1.ToCharArray()), ",");
+            Display.Text = _number1;
         }
     }
 }
