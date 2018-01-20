@@ -38,25 +38,25 @@ namespace CSharpCalculator
         {
             if (_operation == String.Empty)
             {
-                try
+                if (_number1.Length > 1)
                 {
                     _number1 = _number1.Remove(_number1.Length - 1);
                     Display.Text = _number1;
                 }
-                catch (FormatException e)
+                else
                 {
                     _number1 = "0";
                     Display.Text = _number1;
-                }                
+                }
             }
             else
             {
-                try
+                if (_number2.Length < 1)
                 {
                     _number2 = _number2.Remove(_number2.Length - 1);
                     Display.Text = _number2;
                 }
-                catch (FormatException e)
+                else
                 {
                     _number2 = "0";
                     Display.Text = _number2;
@@ -147,16 +147,19 @@ namespace CSharpCalculator
                 case "+" :
                     _number1 = (double.Parse(_number1) + double.Parse(_number2)).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "-":
                     _number1 = (double.Parse(_number1) - double.Parse(_number2)).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "*":
                     _number1 = (double.Parse(_number1) * double.Parse(_number2)).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "/":
@@ -167,31 +170,37 @@ namespace CSharpCalculator
                     }
                     else
                         Display.Text = "Cannot divide by zero.";
+                    _operation = String.Empty;
                     break;
 
                 case "%":
                     _number1 = (double.Parse(_number1) * double.Parse(_number2) / 100).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "sqrt":
                     _number1 = Math.Sqrt(double.Parse(_number1)).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "pow":
                     _number1 = Math.Pow(double.Parse(_number1), 2).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "1/x":
                     _number1 = Math.Pow(double.Parse(_number1), -1).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
 
                 case "sign":
                     _number1 = (double.Parse(_number1) * -1).ToString();
                     Display.Text = _number1;
+                    _operation = String.Empty;
                     break;
             }
         }
