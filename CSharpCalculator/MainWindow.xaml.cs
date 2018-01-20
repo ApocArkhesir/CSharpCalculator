@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CSharpCalculator
 {
@@ -20,9 +8,17 @@ namespace CSharpCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private float _number1;
-        private float _number2;
+        private double _number1;
+        private double _number2;
         private string _operation = String.Empty;
+
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            Title = "Calculator";
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        }
 
         private void AddDigit(int digit)
         {
@@ -35,37 +31,43 @@ namespace CSharpCalculator
             {
                 _number2 = (_number2 * 10) + digit;
                 Display.Text = _number2.ToString();
-            }
-           
+            } 
         }
 
         private void RemoveDigit()
         {
             if (_operation == String.Empty)
             {
-                _number1 = (_number1 / 10);
-                Display.Text = _number1.ToString();
+                try
+                {
+                    _number1 = Convert.ToDouble(_number1.ToString().Remove(_number1.ToString().Length - 1));
+                    Display.Text = _number1.ToString();
+                }
+                catch (FormatException e)
+                {
+                    _number1 = 0;
+                    Display.Text = _number1.ToString();
+                }                
             }
             else
             {
-                _number2 = (_number2 / 10);
-                Display.Text = _number2.ToString();
+                try
+                {
+                    _number2 = Convert.ToDouble(_number2.ToString().Remove(_number2.ToString().Length - 1));
+                    Display.Text = _number2.ToString();
+                }
+                catch (FormatException e)
+                {
+                    _number2 = 0;
+                    Display.Text = _number2.ToString();
+                }
             }
-
         }
 
         private void ChooseOperation(string operation)
         {
             _operation = operation;
             Display.Text = "0";
-        }
-
-        public MainWindow()
-        {
-            InitializeComponent();
-
-            Title = "Calculator";
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
 
         private void Button7_Click(object sender, RoutedEventArgs e)
@@ -166,6 +168,33 @@ namespace CSharpCalculator
                     else
                         Display.Text = "Cannot divide by zero.";
                     break;
+
+                case "%":
+                    _number1 = (_number1 * _number2) / 100;
+                    Display.Text = _number1.ToString();
+                    break;
+
+                case "sqrt":
+                    _number1 = Math.Sqrt(_number1);
+                    Display.Text = _number1.ToString();
+                    break;
+
+                case "pow":
+                    _number1 = Math.Pow(_number1, 2);
+                    Display.Text = _number1.ToString();
+                    break;
+
+                case "1/x":
+                    _number1 = Math.Pow(_number1, -1);
+                    Display.Text = _number1.ToString();
+                    break;
+
+                case "sign":
+                    _number1 *= -1;
+                    Display.Text = _number1.ToString();
+                    break;
+
+                
             }
         }
 
@@ -189,8 +218,37 @@ namespace CSharpCalculator
 
         private void ButtonBspace_Click(object sender, RoutedEventArgs e)
         {
-            RemoveDigit();
+            RemoveDigit();        
+        }
 
+        private void ButtonPerc_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseOperation("%");
+        }
+
+        private void ButtonSqrt_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseOperation("sqrt");
+        }
+
+        private void ButtonPow_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseOperation("pow");
+        }
+
+        private void ButtonInv_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseOperation("1/x");
+        }
+
+        private void ButtonSign_Click(object sender, RoutedEventArgs e)
+        {
+            ChooseOperation("sign");
+        }
+
+        private void ButtonComma_Click(object sender, RoutedEventArgs e)
+        {
+            _number1 = 
         }
     }
 }
