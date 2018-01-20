@@ -41,18 +41,18 @@
         <Button x:Name="Button0" Grid.Row="5" Grid.Column="1" Click="Button0_Click">0</Button>
         
         <!-- Operation buttons -->
-        <Button x:Name="ButtonClearEntry" Grid.Row="1" Grid.Column="0">CE</Button>
-        <Button x:Name="ButtonBspace" Grid.Row="1" Grid.Column="1">&lt;-</Button>
+        <Button x:Name="ButtonClearEntry" Grid.Row="1" Grid.Column="0" Click="ButtonClearEntry_Click">CE</Button>
+        <Button x:Name="ButtonBspace" Grid.Row="1" Grid.Column="1" Height="70" VerticalAlignment="Bottom" Click="ButtonBspace_Click">&lt;-</Button>
         <Button x:Name="ButtonSqrt" Grid.Row="1" Grid.Column="2">&#x221A;x</Button>
         <Button x:Name="ButtonPow" Grid.Row="1" Grid.Column="3">x&#x00B2;</Button>
 
-        <Button x:Name="ButtonAdd" Grid.Row="2" Grid.Column="3">+</Button>
-        <Button x:Name="ButtonSub" Grid.Row="3" Grid.Column="3">-</Button>
-        <Button x:Name="ButtonMul" Grid.Row="4" Grid.Column="3">*</Button>
+        <Button x:Name="ButtonAdd" Grid.Row="2" Grid.Column="3" Click="ButtonAdd_Click">+</Button>
+        <Button x:Name="ButtonSub" Grid.Row="3" Grid.Column="3" Click="ButtonSub_Click">-</Button>
+        <Button x:Name="ButtonMul" Grid.Row="4" Grid.Column="3" Click="ButtonMul_Click">*</Button>
 
-        <Button x:Name="ButtonEq" Grid.Row="5" Grid.Column="2">=</Button>
-        <Button x:Name="ButtonClear" Grid.Row="5" Grid.Column="0">C</Button>
-        <Button x:Name="ButtonDiv" Grid.Row="5" Grid.Column="3">/</Button>
+        <Button x:Name="ButtonEq" Grid.Row="5" Grid.Column="2" Click="ButtonEq_Click">=</Button>
+        <Button x:Name="ButtonClear" Grid.Row="5" Grid.Column="0" Click="ButtonClear_Click">C</Button>
+        <Button x:Name="ButtonDiv" Grid.Row="5" Grid.Column="3" Click="ButtonDiv_Click">/</Button>
         
         <!-- Display -->
         <TextBox x:Name="Display" IsReadOnly="True" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="34" BorderThickness="0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">0</TextBox>
