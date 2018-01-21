@@ -49,7 +49,7 @@
         
         <Button x:Name="ButtonClearEntry" Grid.Row="2" Grid.Column="0" Click="ButtonClearEntry_Click">CE</Button>
         <Button x:Name="ButtonClear" Grid.Row="2" Grid.Column="1" Click="ButtonClear_Click">C</Button>
-        <Button x:Name="ButtonBspace" Grid.Row="2" Grid.Column="2" Height="70" VerticalAlignment="Center" Click="ButtonBspace_Click">&lt;-</Button>
+        <Button x:Name="ButtonBspace" Grid.Row="2" Grid.Column="2" Click="ButtonBspace_Click">&lt;-</Button>
 
         <Button x:Name="ButtonAdd" Grid.Row="2" Grid.Column="3" Click="ButtonAdd_Click">+</Button>
         <Button x:Name="ButtonSub" Grid.Row="3" Grid.Column="3" Click="ButtonSub_Click">-</Button>
